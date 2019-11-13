@@ -74,30 +74,26 @@ Person.prototype.toString = function () {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car(model, milesPerGallon, fuel) {
+function Car(model, milesPerGallon) {
   this.model = model;
   this.milesPerGallon = milesPerGallon;
-  this.fuel = fuel;
   this.tank = 0;
   this.odometer = 0;
 }
 
-Car.prototype.fill = function(gallons) {
-this.tank = this.tank + gallons;
-};
-
-Car.prototype.drive = function(distance) {
-this.odometer = this.odometer + distance;
+Car.prototype.fill = function (gallons) {
+  this.tank = this.tank + gallons;
 };
 
 
-Car.prototype.drive = function(distance) {
+Car.prototype.drive = function (distance) {
   if (this.tank > 0) {
-  this.tank = this.tank-(distance/this.milesPerGallon);
-} else {
-  return `${"I ran out of fuel at"} ${" "} ${this.odometer} ${" "} ${"miles!"}`
-}
-}
+    this.odometer = this.odometer + distance;
+    this.tank = this.tank - (distance / this.milesPerGallon);
+    // } else {
+    //return `I ran out of fuel at ${this.odometer} miles!`
+  }
+};
 
 
 //if (this.fuel === 0) {
@@ -125,10 +121,11 @@ Baby.prototype.play = function () {
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+
+  1. The Global Binding or Window Binding: when in the global scope, the value of "this" will be the window.
+  2. The Implicit Binding: when a function is called by a preceding dot, the object left of the dot gets "this".
+  3. The New Binding:"this" refers to the specific instance of the object that is created and returned by a constructor function.
+  4. The explicit Binding or Strict Mode: "this" prevent global binding from breaking the codes.
 */
 
 
